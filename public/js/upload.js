@@ -40,7 +40,7 @@ $('#upload-input').on('change', function(){
                     }
 
                 }, false);
-
+0\\
                 return xhr;
             }
         });
