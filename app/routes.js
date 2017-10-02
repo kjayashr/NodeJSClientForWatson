@@ -13,6 +13,11 @@ module.exports = function(app, passport) {
             user : req.user
         });
     });
+    app.get('/main', isLoggedIn, function(req, res) {
+        res.render('main.ejs', {
+            user : req.user
+        });
+    });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -35,7 +40,7 @@ module.exports = function(app, passport) {
 
         // process the login form
         app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/main', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
